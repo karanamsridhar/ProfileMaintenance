@@ -17,9 +17,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <h1>Profile Maintenance</h1>
-    <table class="table table-hover">
+  <body ng-app="profileMaintenance">
+    <div ng-controller="profileController">
+    	<h1>{{title}}</h1><br>
+		<table class="table table-hover">
     	<thead>
     		<tr>
     			<th>
@@ -40,99 +41,66 @@
     		</tr>
     	</thead>
     	<tbody>
-    		<tr>
+    		<tr ng-repeat="profile in profiles">
     			<td>
-    				Sridhar
+    				{{profile.firstName}}
     			</td>
     			<td>
-    				Karanam
+    				{{profile.lastName}}
     			</td>
     			<td>
-    				IT
+    				{{profile.field}}
     			</td>
     			<td>
-    				Developer
+    				{{profile.role}}
     			</td>
     			<td>
-    				<button type="button" class="btn btn-primary">Update</button>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>
-    				John
-    			</td>
-    			<td>
-    				Doe
-    			</td>
-    			<td>
-    				IT
-    			</td>
-    			<td>
-    				Architect
-    			</td>
-    			<td>
-    				<button type="button" class="btn btn-primary">Update</button>
+    				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#maintainProfile" ng-click="updateProfile(profile.firstName,profile.lastName,profile.field,profile.role);">Update</button>
     			</td>
     		</tr>
     		<tr>
-    			<td>
-    				Virat
-    			</td>
-    			<td>
-    				Kohli
-    			</td>
-    			<td>
-    				Sports
-    			</td>
-    			<td>
-    				Cricketer
-    			</td>
-    			<td>
-    				<button type="button" class="btn btn-primary">Update</button>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>
-    				Yuvraj
-    			</td>
-    			<td>
-    				Singh
-    			</td>
-    			<td>
-    				Sports
-    			</td>
-    			<td>
-    				Cricketer
-    			</td>
-    			<td>
-    				<button type="button" class="btn btn-primary">Update</button>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>
-    				Jimmy
-    			</td>
-    			<td>
-    				Johns
-    			</td>
-    			<td>
-    				Food Service
-    			</td>
-    			<td>
-    				Chef
-    			</td>
-    			<td>
-    				<button type="button" class="btn btn-primary">Update</button>
-    			</td>
+    			<td colspan="5" align="justify"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#maintainProfile" ng-click="addProfile();">Add Profile</button></td>
     		</tr>
     	</tbody>
-    </table>
+    </table>    	
+	<!-- Modal Begin -->
+	<div class="modal fade" id="maintainProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModalDialog();"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">{{maintainProfileTitle}}</h4>
+	      </div>
+	      <div class="modal-body">
+	        <table class = "table table-hover">	
+	        	<tr>
+	        		<td>First Name:</td><td><input type="text" ng-model="fName"/></td>
+	        	</tr>	
+	        	<tr>
+	        		<td>Last Name:</td><td><input type="text" ng-model="lName"/></td>
+	        	</tr>	
+	        	<tr>
+	        		<td>Field:</td><td><input type="text" ng-model="fld"/></td>
+	        	</tr>	
+	        	<tr>	
+	        		<td>Role:</td><td><input type="text" ng-model="rle"/></td>
+	        	</tr>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModalDialog();">Close</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveData();">Save</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!--Modal End  -->    
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="  crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="js/application.js"></script>    
   </body>
 </html>
