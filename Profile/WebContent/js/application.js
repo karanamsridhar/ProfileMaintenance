@@ -37,6 +37,10 @@ profileApp.controller('profileController', function ($scope){
 		}
 	}
 	
+	$scope.deleteProfile = function(firstName, lastName){
+		
+	}
+	
 	$scope.clearData = function(){
 		$scope.fName = "";
 		$scope.lName = "";
